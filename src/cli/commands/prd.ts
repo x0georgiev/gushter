@@ -150,14 +150,16 @@ export async function prdCommand(options: PrdOptions = {}): Promise<void> {
 
 async function runInteractiveClaude(systemPrompt: string, cwd: string, outputPath: string): Promise<void> {
   return new Promise((resolve, reject) => {
-    const fullPrompt = `${systemPrompt}
+    const fullSystemPrompt = `${systemPrompt}
 
-IMPORTANT: When the PRD is complete, save it to: ${outputPath}
+IMPORTANT: When the PRD is complete, save it to: ${outputPath}`;
 
-Begin now by asking the user about their feature.`;
-
-    // Use -p flag to pass initial prompt, interactive mode
-    const child = spawn('claude', ['-p', fullPrompt], {
+    // Use --system-prompt for instructions, pass initial message as argument
+    // No -p flag = interactive mode
+    const child = spawn('claude', [
+      '--system-prompt', fullSystemPrompt,
+      'Start by asking the user what feature they want to build.'
+    ], {
       cwd,
       stdio: 'inherit',
       env: { ...process.env },
