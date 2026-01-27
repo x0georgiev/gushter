@@ -1,0 +1,33 @@
+{
+  "project": "MyProject",
+  "branchName": "ralph/feature-name",
+  "description": "Brief description of the feature",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "First user story",
+      "description": "As a user, I want X so that Y.",
+      "acceptanceCriteria": [
+        "Criterion 1",
+        "Criterion 2",
+        "Typecheck passes"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-002",
+      "title": "Second user story",
+      "description": "As a user, I want A so that B.",
+      "acceptanceCriteria": [
+        "Criterion 1",
+        "Criterion 2",
+        "Typecheck passes"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": ""
+    }
+  ]
+}

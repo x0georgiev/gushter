@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Gushter runtime files (created in user projects, at repo root)
+/prd.md
+/prd.json
+/progress.txt
+/.gushter/
+/.last-branch
+/archive/
+
+# Config (user-specific)
+gushter.config.json
+
+# TypeScript
+*.tsbuildinfo
+
+# Test coverage
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Claude
+.claude/
