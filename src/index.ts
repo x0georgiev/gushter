@@ -59,11 +59,13 @@ program
 
 program
   .command('init')
-  .description('Initialize gushter.config.json in current directory')
-  .option('-f, --force', 'Overwrite existing config')
+  .description('Initialize gushter in current directory')
+  .option('-f, --force', 'Overwrite existing files')
+  .option('--no-prd', 'Skip creating prd.json (use with gushter prd workflow)')
   .action(async (options) => {
     await initCommand({
       force: options.force,
+      noPrd: !options.prd,
     });
   });
 

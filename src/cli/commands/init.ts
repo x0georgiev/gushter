@@ -6,6 +6,7 @@ import { DEFAULT_CONFIG } from '../../config/schema.js';
 
 export interface InitOptions {
   force?: boolean;
+  noPrd?: boolean;
 }
 
 const EXAMPLE_CONFIG = {
@@ -146,7 +147,7 @@ export async function initCommand(options: InitOptions = {}): Promise<void> {
     });
   }
 
-  if (!existsSync(prdPath) || options.force) {
+  if (!options.noPrd && (!existsSync(prdPath) || options.force)) {
     filesToCreate.push({
       path: prdPath,
       content: JSON.stringify(PRD_TEMPLATE, null, 2) + '\n',
@@ -179,10 +180,17 @@ export async function initCommand(options: InitOptions = {}): Promise<void> {
 
     logger.newline();
     logger.info('Next steps:');
-    logger.raw('  1. Edit prd.json with your user stories');
-    logger.raw('  2. Customize CLAUDE.md for your project');
-    logger.raw('  3. Adjust gushter.config.json verification commands');
-    logger.raw('  4. Run: npx gushter run');
+    if (options.noPrd) {
+      logger.raw('  1. Run: gushter prd');
+      logger.raw('  2. Run: gushter prd-convert');
+      logger.raw('  3. Customize CLAUDE.md for your project');
+      logger.raw('  4. Run: gushter run');
+    } else {
+      logger.raw('  1. Edit prd.json with your user stories');
+      logger.raw('  2. Customize CLAUDE.md for your project');
+      logger.raw('  3. Adjust gushter.config.json verification commands');
+      logger.raw('  4. Run: gushter run');
+    }
   } catch (error) {
     logger.error(`Failed to create files: ${error}`);
     process.exit(1);
