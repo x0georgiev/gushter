@@ -1,5 +1,7 @@
 # Gushter
 
+![Gushter Lizard](assets/lizard.png)
+
 *Makes lizard noises while autonomously coding your features.* 🦎
 
 An autonomous AI agent loop that runs Claude Code repeatedly until all your PRD items are complete. Based on [Geoffrey Huntley's Ralph pattern](https://ghuntley.com/ralph/).
